@@ -3,17 +3,13 @@ html(lang='en')
   head
     meta(charset='utf-8')
     title Prototype
-    link(href="/style.css")
+    link(rel="stylesheet", href="/style.css")
   body
-    h1 Simple Program
-    input#nums(type="text" autofocus=true, placeholder="enter some thit")
-    button#add Sum
-    span#sum 
-    h2 Odds 
-    span#oddtotals
-    ul#odds
-    h2 Evens
-    span#eventotals
-    ul#evens
+    h1 Photoshop
+    input#color(type='color', value="#ff0000")
+    button#add-color Add Color
+    input#quantity(type='number', autofocus=true)
+    button#add-random-colors Add Random
+    #colors
     script(src='/vendor/jquery/dist/jquery.js')
     script(src='/main.js')

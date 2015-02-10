@@ -3,66 +3,35 @@
 $(document).ready(init);
 
 function init() {
-  $('#add').click(add);
+  $('#add-color').click(addColor);
+  $('#add-random-colors').click(addRandom);
 }
 
-function add() {
-  //sum turns values into an array
-  var sum = $('#nums').val().split(',')
-  //turns sum into array of numbers
-  .map(function(letter) {
+function addColor() {
+var color = $('#color').val();
+var $box = $('<div>');
+$box.css('background-color', color);
+$box.addClass('box');
+$('#colors').append($box);
 
-  var num = parseInt(letter);
-  var $li =  $('<li>');
-    if (num%2) {
-      ///odds
-    $li.text(num);
-    $('#odds').append($li);
-    } else {
-      //evens
-      $li.text(num);
-      $('#evens').append($li);
-    }
+}
 
-    return num;
-    //reduce adds the numbers up
-    //if this were to be *, 0 would be 1
-  }).reduce(function(prev, curr) {
-    return prev + curr;
-  }, 0);
-
-  $('#sum').text(sum);
-
-  var oddsum = total('#odds li');
-  var evensum = total('#evens li');
-
-  $('#oddtotals').text(oddsum);
-  $('#eventotals').text(evensum);
-
-  function total(selector){
-    return $(selector)
-    .map(function(index, element){
-      return parseInt(element.textContent);
-    }).toArray()
-    .reduce(function(prev, curr){
-      return prev + curr;
-    }, 0);
-
+function addRandom(){
+  var Q = $('#quantity').val() * 1;
+  for(var i = 0; i < Q; i ++){
+    createRandom();
   }
 
-  // var oddCount = 0;
-  // var elements = $('#odds li')
-  // .map(function(index, element) {
-  //   oddCount += parseInt(element.textContent);
-  // });
-  //
-  // var evenCount = 0;
-  // var elements = $('#evens li')
-  // .map(function(index, element) {
-  //   evenCount += parseInt(element.textContent);
-  // });
-  //
-  // $('#oddtotals').text(oddCount + ' total');
-  // $('#eventotals').text(evenCount + ' total');
-
 }
+
+function createRandom(){
+    var r = Math.floor(Math.random() * 256);
+    var g = Math.floor(Math.random() * 256);
+    var b = Math.floor(Math.random() * 256);
+
+    var $box = $('<div>');
+    $box.css('background-color', 'rgb('+r+','+g+','+b+' )');
+    $box.addClass('box');
+    $('#colors').append($box);
+
+ }
